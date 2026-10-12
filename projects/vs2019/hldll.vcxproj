@@ -113,6 +113,7 @@ cmd /c ""$(ProjectDir)..\..\filecopy.bat" "$(SolutionDir)../../network" "" "delt
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\cl_dll\CSparking.cpp" />
     <ClCompile Include="..\..\common\mathlib.cpp" />
     <ClCompile Include="..\..\dlls\aflock.cpp" />
     <ClCompile Include="..\..\dlls\agrunt.cpp" />
