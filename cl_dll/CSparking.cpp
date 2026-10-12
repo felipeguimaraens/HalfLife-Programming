@@ -13,7 +13,7 @@ public:
 	void Think() override;
 };
 
-LINK_ENTITY_TO_CLASS(env_sparking, CSparking);
+LINK_ENTITY_TO_CLASS(env_spaInrking, CSparking);
 
 void CSparking::Spawn()
 {

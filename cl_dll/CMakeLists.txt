@@ -254,4 +254,4 @@ target_sources(client PRIVATE
 	../pm_shared/pm_movevars.h
 	../pm_shared/pm_shared.h
 
-	../public/interface.h)
+	../public/interface.h "../dlls/CCompExplosive.cpp")
