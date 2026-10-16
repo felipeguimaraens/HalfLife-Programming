@@ -10,6 +10,9 @@ public:
 	void Use(CBaseEntity* pActivator, CBaseEntity* pCaller, USE_TYPE useType, float value) override;
 private:
 	bool isActive = false;
+	float colorRed = 255.;
+	float colorGreen = 255.;
+	float colorBlue = 255.;
 };
 
 LINK_ENTITY_TO_CLASS(c_magic_crystal, CMagicCrystal);
@@ -17,14 +20,7 @@ LINK_ENTITY_TO_CLASS(c_magic_crystal, CMagicCrystal);
 void CMagicCrystal::Spawn() {
 	pev->solid = SOLID_BBOX;
 	SET_MODEL(edict(), STRING(pev->model));
-
-	// Attributes only valid when active
 	pev->renderamt = 100;
-	pev->rendercolor.x = 255;
-	pev->rendercolor.y = 128;
-	pev->rendercolor.z = 128;
-
-	pev->nextthink = gpGlobals->time;
 }
 
 void CMagicCrystal::Use(CBaseEntity* pActivator, CBaseEntity* pCaller, USE_TYPE useType, float value) {
@@ -32,6 +28,7 @@ void CMagicCrystal::Use(CBaseEntity* pActivator, CBaseEntity* pCaller, USE_TYPE 
 
 	if (isActive) {
 		pev->rendermode = kRenderTransColor;
+		pev->nextthink = gpGlobals->time;
 	}
 	else {
 		pev->rendermode = kRenderNormal;
@@ -39,5 +36,16 @@ void CMagicCrystal::Use(CBaseEntity* pActivator, CBaseEntity* pCaller, USE_TYPE 
 }
 
 void CMagicCrystal::Think() {
-	pev->nextthink = gpGlobals->time + 1.f;
+	if (isActive) {
+		colorRed = RANDOM_FLOAT(0.0, 255.0);
+		colorGreen = RANDOM_FLOAT(0.0, 255.0);
+		colorBlue = RANDOM_FLOAT(0.0, 255.0);
+
+		pev->rendercolor = Vector(colorRed, colorGreen, colorBlue);
+
+		pev->nextthink = gpGlobals->time + 1.f;
+	}
+	else {
+		pev->nextthink = 0.0;
+	}
 }
