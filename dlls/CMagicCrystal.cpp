@@ -8,11 +8,9 @@ public:
 	void Spawn() override;
 	void Think() override;
 	void Use(CBaseEntity* pActivator, CBaseEntity* pCaller, USE_TYPE useType, float value) override;
-	void ChangeColor();
 private:
 	bool isActive = false;
 	bool doRotate = true;
-	bool doChangeColor = true;
 	float rotationSpeed = 90.0f;
 	float nextChangeColor = 0.0f;
 	float colorRed = 255.;
@@ -47,19 +45,14 @@ void CMagicCrystal::Use(CBaseEntity* pActivator, CBaseEntity* pCaller, USE_TYPE 
 }
 
 void CMagicCrystal::Think() {
-	if (doChangeColor && pev->ltime >= nextChangeColor)
-		ChangeColor();
-
-	pev->nextthink = gpGlobals->time;
-}
-
-void CMagicCrystal::ChangeColor() {
-	nextChangeColor = pev->ltime + 0.05f;
-	if (pev->rendermode == kRenderNormal) pev->rendermode = kRenderTransColor;
+	if (pev->rendermode == kRenderNormal)
+		pev->rendermode = kRenderTransColor;
 
 	colorRed = RANDOM_FLOAT(0.0, 255.0);
 	colorGreen = RANDOM_FLOAT(0.0, 255.0);
 	colorBlue = RANDOM_FLOAT(0.0, 255.0);
 
 	pev->rendercolor = Vector(colorRed, colorGreen, colorBlue);
+
+	pev->nextthink = pev->ltime + 1.0f;
 }
