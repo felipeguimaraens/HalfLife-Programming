@@ -9,12 +9,11 @@ public:
 	void Think() override;
 	void Use(CBaseEntity* pActivator, CBaseEntity* pCaller, USE_TYPE useType, float value) override;
 	void ChangeColor();
-	void Rotate();
 private:
 	bool isActive = false;
 	bool doRotate = true;
 	bool doChangeColor = true;
-	float rotationSpeed = 25.0f;
+	float rotationSpeed = 90.0f;
 	float nextChangeColor = 0.0f;
 	float colorRed = 255.;
 	float colorGreen = 255.;
@@ -24,11 +23,13 @@ private:
 LINK_ENTITY_TO_CLASS(c_magic_crystal, CMagicCrystal);
 
 void CMagicCrystal::Spawn() {
-	pev->solid = SOLID_BBOX;
+	pev->solid = SOLID_BSP;
+	pev->movetype = MOVETYPE_PUSH;
 	SET_MODEL(edict(), STRING(pev->model));
 	pev->renderamt = 156;
 	pev->rendermode = kRenderNormal;
-	pev->avelocity.z = rotationSpeed * M_PI / 180;
+	if (doRotate)
+		pev->avelocity.z = rotationSpeed;
 
 	if (isActive)
 		pev->nextthink = gpGlobals->time;
@@ -46,19 +47,14 @@ void CMagicCrystal::Use(CBaseEntity* pActivator, CBaseEntity* pCaller, USE_TYPE 
 }
 
 void CMagicCrystal::Think() {
-	if (doRotate) Rotate();
-	if (doChangeColor && gpGlobals->time > nextChangeColor)
+	if (doChangeColor && pev->ltime >= nextChangeColor)
 		ChangeColor();
 
-	pev->nextthink = gpGlobals->time;	
-}
-
-void CMagicCrystal::Rotate() {
-	pev->angles = pev->angles + pev->avelocity;
+	pev->nextthink = gpGlobals->time;
 }
 
 void CMagicCrystal::ChangeColor() {
-	nextChangeColor = gpGlobals->time + 1.0f;
+	nextChangeColor = pev->ltime + 0.05f;
 	if (pev->rendermode == kRenderNormal) pev->rendermode = kRenderTransColor;
 
 	colorRed = RANDOM_FLOAT(0.0, 255.0);
