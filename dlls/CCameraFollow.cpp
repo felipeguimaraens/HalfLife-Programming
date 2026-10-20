@@ -47,6 +47,15 @@ CBaseEntity* CCameraFollow::ScanSphere()
 };
 
 bool CCameraFollow::isVisible(CBaseEntity* target) {
+	Vector toTarget = (target->pev->origin - pev->origin).Normalize();
+
+	Vector cameraForward;
+	UTIL_MakeVectorsPrivate(pev->angles, cameraForward, nullptr, nullptr);
+
+	//ALERT(at_console, "%.2f\n", DotProduct(cameraForward, toTarget));
+	if (DotProduct(cameraForward, toTarget) < 0.55f)
+		return false;
+
 	TraceResult tracer;
 	UTIL_TraceLine(pev->origin, target->pev->origin, dont_ignore_monsters, edict(), &tracer);
 
