@@ -132,6 +132,7 @@ cmd /c ""$(ProjectDir)..\..\filecopy.bat" "$(SolutionDir)../../network" "" "delt
     <ClCompile Include="..\..\dlls\CCameraFollow.cpp" />
     <ClCompile Include="..\..\dlls\CCompExplosive.cpp" />
     <ClCompile Include="..\..\dlls\CFade.cpp" />
+    <ClCompile Include="..\..\dlls\CFirstAnimation.cpp" />
     <ClCompile Include="..\..\dlls\client.cpp" />
     <ClCompile Include="..\..\dlls\CMagicCrystal.cpp" />
     <ClCompile Include="..\..\dlls\combat.cpp" />
