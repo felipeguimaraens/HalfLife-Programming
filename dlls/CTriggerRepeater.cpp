@@ -5,7 +5,6 @@
 class CTriggerRepeater : public CBaseEntity
 {
 private:
-	float triggerDelay = 1.0f;
 	CBaseEntity* target = nullptr;
 
 public:
@@ -17,7 +16,8 @@ LINK_ENTITY_TO_CLASS(trigger_repeater, CTriggerRepeater);
 
 void CTriggerRepeater::Spawn()
 {
-	pev->nextthink = gpGlobals->time + triggerDelay;
+	pev->speed = pev->speed * 0.001; // milliseconds
+	pev->nextthink = gpGlobals->time;
 }
 
 void CTriggerRepeater::Think()
@@ -29,5 +29,5 @@ void CTriggerRepeater::Think()
 		target->Use(this, this, USE_TOGGLE, 1);
 	}
 
-	pev->nextthink = gpGlobals->time + triggerDelay;
+	pev->nextthink = gpGlobals->time + pev->speed;
 }
