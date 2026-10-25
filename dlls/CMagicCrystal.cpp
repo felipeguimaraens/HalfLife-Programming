@@ -37,7 +37,7 @@ void CMagicCrystal::Use(CBaseEntity* pActivator, CBaseEntity* pCaller, USE_TYPE 
 	isActive = !isActive;
 
 	if (isActive)
-		pev->nextthink = gpGlobals->time;
+		pev->nextthink = gpGlobals->time + 0.1f;
 	else {
 		pev->rendermode = kRenderNormal;
 		pev->nextthink = 0;
