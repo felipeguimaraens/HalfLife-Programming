@@ -132,6 +132,7 @@ cmd /c ""$(ProjectDir)..\..\filecopy.bat" "$(SolutionDir)../../network" "" "delt
     <ClCompile Include="..\..\dlls\CCameraFollow.cpp" />
     <ClCompile Include="..\..\dlls\CCompExplosive.cpp" />
     <ClCompile Include="..\..\dlls\CFade.cpp" />
+    <ClCompile Include="..\..\dlls\CFirstAnimation.cpp" />
     <ClCompile Include="..\..\dlls\client.cpp" />
     <ClCompile Include="..\..\dlls\CMagicCrystal.cpp" />
     <ClCompile Include="..\..\dlls\combat.cpp" />
@@ -140,6 +141,7 @@ cmd /c ""$(ProjectDir)..\..\filecopy.bat" "$(SolutionDir)../../network" "" "delt
     <ClCompile Include="..\..\dlls\crowbar.cpp" />
     <ClCompile Include="..\..\dlls\CTrampoline.cpp" />
     <ClCompile Include="..\..\dlls\CTriggerHeal.cpp" />
+    <ClCompile Include="..\..\dlls\CTriggerRepeater.cpp" />
     <ClCompile Include="..\..\dlls\defaultai.cpp" />
     <ClCompile Include="..\..\dlls\doors.cpp" />
     <ClCompile Include="..\..\dlls\effects.cpp" />
