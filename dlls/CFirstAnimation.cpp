@@ -16,6 +16,7 @@ void CFirstAnim::Spawn() {
 	SET_MODEL(edict(), "models/barney.mdl");
 
 	pev->sequence = LookupSequence("run");
+	ResetSequenceInfo();
 	pev->nextthink = gpGlobals->time;
 }
 
@@ -24,9 +25,7 @@ void CFirstAnim::Precache() {
 }
 
 void CFirstAnim::Think() {
-	pev->frame += 1.0f;
-	if (pev->frame >= 255)
-		pev->frame = 0.0;
-
+	
+	StudioFrameAdvance();
 	pev->nextthink = gpGlobals->time + 0.01f;
 }
