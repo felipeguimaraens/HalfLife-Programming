@@ -139,6 +139,7 @@ cmd /c ""$(ProjectDir)..\..\filecopy.bat" "$(SolutionDir)../../network" "" "delt
     <ClCompile Include="..\..\dlls\controller.cpp" />
     <ClCompile Include="..\..\dlls\crossbow.cpp" />
     <ClCompile Include="..\..\dlls\crowbar.cpp" />
+    <ClCompile Include="..\..\dlls\CScreenFade.cpp" />
     <ClCompile Include="..\..\dlls\CTrampoline.cpp" />
     <ClCompile Include="..\..\dlls\CTriggerHeal.cpp" />
     <ClCompile Include="..\..\dlls\CTriggerRepeater.cpp" />
