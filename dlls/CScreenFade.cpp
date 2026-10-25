@@ -9,11 +9,9 @@ class CScreenFade : public CBaseEntity {
 
 LINK_ENTITY_TO_CLASS(env_screen_fade, CScreenFade);
 
-void CScreenFade::Spawn() {
-	pev->rendercolor = Vector(0.0f, 0.0f, 0.0f);
-}
+void CScreenFade::Spawn() {}
 
 void CScreenFade::Use(CBaseEntity* pActivator, CBaseEntity* pCaller, USE_TYPE useType, float value) {
-	ALERT(at_console, "Screen fader started \n");
-	UTIL_ScreenFadeAll(pev->rendercolor, 3.0f, 2.0f, 255, 0);	
+	ALERT(at_console, "Screen fader started. Duration:%.2f, FadeHold:%.2f \n", pev->speed, pev->armorvalue);
+	UTIL_ScreenFadeAll(pev->rendercolor, pev->speed, pev->armorvalue, 255, 0);
 }
