@@ -14,6 +14,7 @@ private:
 	// Function for each fx effects
 	void Explosion();
 	void BeamPoints();
+	void Gunshot();
 	short fx_type = 0;
 	short m_BeamSprite;
 };
@@ -41,6 +42,7 @@ void fxEffects::Use(CBaseEntity* pActivator, CBaseEntity* pCaller, USE_TYPE useT
 	{
 		case 1: Explosion(); break;
 		case 2: BeamPoints(); break;
+		case 3: Gunshot(); break;
 	}
 
 	
@@ -79,5 +81,14 @@ void fxEffects::BeamPoints() {
 	WRITE_BYTE(0);
 	WRITE_BYTE(255);
 	WRITE_BYTE(50);
+	MESSAGE_END();
+}
+
+void fxEffects::Gunshot() {
+	MESSAGE_BEGIN(MSG_PVS, SVC_TEMPENTITY, pev->origin);
+	WRITE_BYTE(TE_GUNSHOT);
+	WRITE_COORD(pev->origin.x);
+	WRITE_COORD(pev->origin.y);
+	WRITE_COORD(pev->origin.z);
 	MESSAGE_END();
 }
