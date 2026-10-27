@@ -11,14 +11,15 @@ public:
 	void Spawn() override;
 	void Use(CBaseEntity* pActivator, CBaseEntity* pCaller, USE_TYPE useType, float value) override;
 private:
-	// Function for each fx effects
-	void Explosion();
-	void BeamPoints();
-	void Gunshot();
-	void fx_Lightning();
 	short fx_type = 0;
 	short m_BeamSprite;
 	short m_LightningSprite;
+	// Function for each fx effects
+	void fx_Explosion();
+	void fx_BeamPoints();
+	void fx_Gunshot();
+	void fx_Lightning();
+	void fx_Spark();
 };
 
 LINK_ENTITY_TO_CLASS(env_fx_effects, fxEffects);
@@ -43,16 +44,18 @@ void fxEffects::Use(CBaseEntity* pActivator, CBaseEntity* pCaller, USE_TYPE useT
 	
 	switch (fx_type)
 	{
-		case 1: Explosion(); break;
-		case 2: BeamPoints(); break;
-		case 3: Gunshot(); break;
+		case 1: fx_Explosion(); break;
+		case 2: fx_BeamPoints(); break;
+		case 3: fx_Gunshot(); break;
 		case 4: fx_Lightning(); break;
+		case 5: fx_Spark(); break;
 	}
 
 	
 }
 
-void fxEffects::Explosion() {
+void fxEffects::fx_Explosion()
+{
 	MESSAGE_BEGIN(MSG_PVS, SVC_TEMPENTITY, pev->origin);
 	WRITE_BYTE(TE_EXPLOSION);
 	WRITE_COORD(pev->origin.x);
@@ -65,7 +68,7 @@ void fxEffects::Explosion() {
 	MESSAGE_END();
 }
 
-void fxEffects::BeamPoints() {
+void fxEffects::fx_BeamPoints() {
 	MESSAGE_BEGIN(MSG_PVS, SVC_TEMPENTITY, pev->origin);
 	WRITE_BYTE(TE_BEAMPOINTS);
 	WRITE_COORD(pev->origin.x);
@@ -88,7 +91,7 @@ void fxEffects::BeamPoints() {
 	MESSAGE_END();
 }
 
-void fxEffects::Gunshot() {
+void fxEffects::fx_Gunshot() {
 	MESSAGE_BEGIN(MSG_PVS, SVC_TEMPENTITY, pev->origin);
 	WRITE_BYTE(TE_GUNSHOT);
 	WRITE_COORD(pev->origin.x);
@@ -111,5 +114,14 @@ void fxEffects::fx_Lightning() {
 	WRITE_BYTE(200);
 	WRITE_BYTE(40);
 	WRITE_SHORT(m_LightningSprite);
+	MESSAGE_END();
+}
+
+void fxEffects::fx_Spark() {
+	MESSAGE_BEGIN(MSG_PVS, SVC_TEMPENTITY, pev->origin);
+	WRITE_BYTE(TE_SPARKS);
+	WRITE_COORD(pev->origin.x);
+	WRITE_COORD(pev->origin.y);
+	WRITE_COORD(pev->origin.z);
 	MESSAGE_END();
 }
