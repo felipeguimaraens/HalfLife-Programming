@@ -30,11 +30,20 @@ void fxEffects::Spawn() {
 void fxEffects::Use(CBaseEntity* pActivator, CBaseEntity* pCaller, USE_TYPE useType, float value) {
 	//Returns player and func_button. Pure curiosity... Also without explicity cast to STRING it breakes the game
 	//ALERT(at_console, "pActivator.targetname:%s; pCaller.targetname:%s; \n", STRING(pActivator->pev->classname), STRING(pCaller->pev->classname));
+	
+	// Hack to use one env_fx_effects with multiple buttons
+	if (pCaller->pev->armorvalue > 0) {
+		fx_type = pCaller->pev->armorvalue;
+		ALERT(at_console, "ArmorValue: %.2f and %i \n", pCaller->pev->armorvalue, fx_type);
+	}
+	
 	switch (fx_type)
 	{
-		case 0: Explosion(); break;
-		case 1: BeamPoints(); break;
+		case 1: Explosion(); break;
+		case 2: BeamPoints(); break;
 	}
+
+	
 }
 
 void fxEffects::Explosion() {
