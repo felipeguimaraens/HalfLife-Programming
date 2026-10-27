@@ -15,8 +15,10 @@ private:
 	void Explosion();
 	void BeamPoints();
 	void Gunshot();
+	void fx_Lightning();
 	short fx_type = 0;
 	short m_BeamSprite;
+	short m_LightningSprite;
 };
 
 LINK_ENTITY_TO_CLASS(env_fx_effects, fxEffects);
@@ -26,6 +28,7 @@ void fxEffects::Spawn() {
 	fx_type = pev->health;
 	// Not mentioned in video series but some messages must have sprite precached apart
 	m_BeamSprite = PRECACHE_MODEL("sprites/lgtning.spr");
+	m_LightningSprite = PRECACHE_MODEL("sprites/xbeam5.spr");
 }
 
 void fxEffects::Use(CBaseEntity* pActivator, CBaseEntity* pCaller, USE_TYPE useType, float value) {
@@ -43,6 +46,7 @@ void fxEffects::Use(CBaseEntity* pActivator, CBaseEntity* pCaller, USE_TYPE useT
 		case 1: Explosion(); break;
 		case 2: BeamPoints(); break;
 		case 3: Gunshot(); break;
+		case 4: fx_Lightning(); break;
 	}
 
 	
@@ -90,5 +94,22 @@ void fxEffects::Gunshot() {
 	WRITE_COORD(pev->origin.x);
 	WRITE_COORD(pev->origin.y);
 	WRITE_COORD(pev->origin.z);
+	MESSAGE_END();
+}
+
+void fxEffects::fx_Lightning() {
+	MESSAGE_BEGIN(MSG_PVS, SVC_TEMPENTITY, pev->origin);
+	WRITE_BYTE(TE_LIGHTNING);
+	WRITE_COORD(pev->origin.x);
+	WRITE_COORD(pev->origin.y);
+	WRITE_COORD(pev->origin.z + 64.0f);
+	WRITE_COORD(pev->origin.x);
+	WRITE_COORD(pev->origin.y);
+	WRITE_COORD(pev->origin.z - 64.0f);
+
+	WRITE_BYTE(50);
+	WRITE_BYTE(200);
+	WRITE_BYTE(40);
+	WRITE_SHORT(m_LightningSprite);
 	MESSAGE_END();
 }
