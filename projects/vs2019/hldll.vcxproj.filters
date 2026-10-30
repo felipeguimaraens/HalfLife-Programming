@@ -396,9 +396,6 @@
     <ClCompile Include="..\..\dlls\CTriggerRepeater.cpp">
       <Filter>Source Files\dlls</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\dlls\CFirstAnimation.cpp">
-      <Filter>Header Files\dlls</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\dlls\CScreenFade.cpp">
       <Filter>Source Files\dlls</Filter>
     </ClCompile>
@@ -406,6 +403,9 @@
       <Filter>Source Files\dlls</Filter>
     </ClCompile>
     <ClCompile Include="..\..\dlls\CLaserCustom.cpp">
+      <Filter>Source Files\dlls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dlls\CFirstAnimation.cpp">
       <Filter>Source Files\dlls</Filter>
     </ClCompile>
   </ItemGroup>
