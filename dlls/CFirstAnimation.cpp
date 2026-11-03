@@ -20,7 +20,7 @@ void CFirstAnim::Spawn() {
 	SET_MODEL(edict(), "models/barney.mdl");
 	pev->angles.y = 270.0f;
 
-	pev->sequence = LookupSequence("run");
+	pev->sequence = LookupSequence("idle");
 	ResetSequenceInfo();
 	pev->nextthink = gpGlobals->time;
 }
@@ -42,6 +42,7 @@ void CFirstAnim::Use(CBaseEntity* pActivator, CBaseEntity* pCaller, USE_TYPE use
 	case 2: pev->sequence = LookupSequence("dieviolent"); break;
 	case 3: pev->sequence = LookupSequence("stuffed_in_vent"); break;
 	}
+	ResetSequenceInfo();
 }
 
 void CFirstAnim::Think() {
