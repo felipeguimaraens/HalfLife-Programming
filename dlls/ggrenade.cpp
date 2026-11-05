@@ -400,6 +400,36 @@ CGrenade* CGrenade::ShootContact(entvars_t* pevOwner, Vector vecStart, Vector ve
 	return pGrenade;
 }
 
+CGrenade* CGrenade::ShootFlare(entvars_t* pevOwner, Vector vecStart, Vector vecVelocity, float time) {
+	CGrenade* pGrenade = GetClassPtr((CGrenade*)NULL);
+	pGrenade->Spawn();
+	UTIL_SetOrigin(pGrenade->pev, vecStart);
+	pGrenade->pev->velocity = vecVelocity;
+	pGrenade->pev->angles = UTIL_VecToAngles(pGrenade->pev->velocity);
+	pGrenade->pev->owner = ENT(pevOwner);
+	pGrenade->pev->effects |= EF_DIMLIGHT;
+
+	pGrenade->SetTouch(&CGrenade::BounceTouch);
+	pGrenade->SetThink(&CGrenade::FlareThink);
+
+	pGrenade->pev->nextthink = gpGlobals->time + 0.1;
+	if (time < 0.1)
+	{
+		pGrenade->pev->nextthink = gpGlobals->time;
+		pGrenade->pev->velocity = Vector(0, 0, 0);
+	}
+
+	SET_MODEL(ENT(pGrenade->pev), "models/w_grenade.mdl");
+	pGrenade->pev->sequence = RANDOM_LONG(3, 6);
+	pGrenade->pev->framerate = 1.0;
+	pGrenade->ResetSequenceInfo();
+
+	pGrenade->pev->gravity = 0.5;
+	pGrenade->pev->friction = 0.8;
+
+	return pGrenade;
+
+}
 
 CGrenade* CGrenade::ShootTimed(entvars_t* pevOwner, Vector vecStart, Vector vecVelocity, float time)
 {
@@ -439,6 +469,24 @@ CGrenade* CGrenade::ShootTimed(entvars_t* pevOwner, Vector vecStart, Vector vecV
 	pGrenade->pev->dmg = 100;
 
 	return pGrenade;
+}
+
+void CGrenade::FlareThink()
+{
+	if (!IsInWorld())
+	{
+		UTIL_Remove(this);
+		return;
+	}
+
+	StudioFrameAdvance();
+	pev->nextthink = gpGlobals->time + 0.1;
+
+	if (pev->waterlevel != 0)
+	{
+		pev->velocity = pev->velocity * 0.5;
+		pev->framerate = 0.2;
+	}
 }
 
 

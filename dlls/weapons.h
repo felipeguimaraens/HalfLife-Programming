@@ -37,6 +37,7 @@ public:
 
 	static CGrenade* ShootTimed(entvars_t* pevOwner, Vector vecStart, Vector vecVelocity, float time);
 	static CGrenade* ShootContact(entvars_t* pevOwner, Vector vecStart, Vector vecVelocity);
+	static CGrenade* ShootFlare(entvars_t* pevOwner, Vector vecStart, Vector vecVelocity, float time);
 	static CGrenade* ShootSatchelCharge(entvars_t* pevOwner, Vector vecStart, Vector vecVelocity);
 	static void UseSatchelCharges(entvars_t* pevOwner, SATCHELCODE code);
 
@@ -52,6 +53,7 @@ public:
 	void EXPORT Detonate();
 	void EXPORT DetonateUse(CBaseEntity* pActivator, CBaseEntity* pCaller, USE_TYPE useType, float value);
 	void EXPORT TumbleThink();
+	void EXPORT FlareThink();
 
 	virtual void BounceSound();
 	int BloodColor() override { return DONT_BLEED; }
@@ -59,7 +61,6 @@ public:
 
 	bool m_fRegisteredSound; // whether or not this grenade has issued its DANGER sound to the world sound list yet.
 };
-
 
 // constant items
 #define ITEM_HEALTHKIT 1
@@ -85,6 +86,7 @@ public:
 #define SNARK_WEIGHT 5
 #define SATCHEL_WEIGHT -10
 #define TRIPMINE_WEIGHT -10
+#define FLARE_WEIGHT -10
 
 
 // weapon clip/carry ammo capacities
@@ -100,6 +102,7 @@ public:
 #define SNARK_MAX_CARRY 15
 #define HORNET_MAX_CARRY 8
 #define M203_GRENADE_MAX_CARRY 10
+#define FLARE_MAX_CARRY 20
 
 // the maximum amount of ammo each weapon's clip can hold
 #define WEAPON_NOCLIP -1
@@ -119,6 +122,7 @@ public:
 #define SATCHEL_MAX_CLIP WEAPON_NOCLIP
 #define TRIPMINE_MAX_CLIP WEAPON_NOCLIP
 #define SNARK_MAX_CLIP WEAPON_NOCLIP
+#define FLARE_MAX_CLIP WEAPON_NOCLIP
 
 
 // the default amount of ammo that comes with each gun when it spawns
@@ -137,6 +141,7 @@ public:
 #define TRIPMINE_DEFAULT_GIVE 1
 #define SNARK_DEFAULT_GIVE 5
 #define HIVEHAND_DEFAULT_GIVE 8
+#define FLARE_DEFAULT_GIVE 8
 
 // The amount of ammo given to a player by an ammo item.
 #define AMMO_URANIUMBOX_GIVE 20

@@ -29,6 +29,7 @@
 #include "cl_dll.h"
 #include "../com_weapons.h"
 #include "../demo.h"
+#include <cFlare.cpp>
 
 extern int g_iUser1;
 
@@ -64,6 +65,7 @@ CHandGrenade g_HandGren;
 CSatchel g_Satchel;
 CTripmine g_Tripmine;
 CSqueak g_Snark;
+cFlare g_Flare;
 
 
 /*
@@ -464,6 +466,7 @@ void HUD_InitClientWeapons()
 	HUD_PrepEntity(&g_Satchel, &player);
 	HUD_PrepEntity(&g_Tripmine, &player);
 	HUD_PrepEntity(&g_Snark, &player);
+	HUD_PrepEntity(&g_Flare, &player);
 }
 
 /*
@@ -586,8 +589,12 @@ void HUD_WeaponsPostThink(local_state_s* from, local_state_s* to, usercmd_t* cmd
 	case WEAPON_SNARK:
 		pWeapon = &g_Snark;
 		break;
-	}
+	
+	case WEAPON_FLARE:
+		pWeapon = &g_Flare;
+		break;
 
+	}
 	// Store pointer to our destination entity_state_t so we can get our origin, etc. from it
 	//  for setting up events on the client
 	g_finalstate = to;

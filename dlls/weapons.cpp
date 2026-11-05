@@ -266,6 +266,7 @@ void W_Precache()
 	giAmmoIndex = 0;
 
 	// custom items...
+	UTIL_PrecacheOtherWeapon("weapon_flare");
 
 	// common world objects
 	UTIL_PrecacheOther("item_suit");
