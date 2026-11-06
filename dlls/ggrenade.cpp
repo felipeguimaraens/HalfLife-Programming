@@ -25,6 +25,7 @@
 #include "weapons.h"
 #include "soundent.h"
 #include "decals.h"
+#include <bouncygrenade.cpp>
 
 
 //===================grenade
@@ -401,7 +402,7 @@ CGrenade* CGrenade::ShootContact(entvars_t* pevOwner, Vector vecStart, Vector ve
 }
 
 CGrenade* CGrenade::ShootFlare(entvars_t* pevOwner, Vector vecStart, Vector vecVelocity, float time) {
-	CGrenade* pGrenade = GetClassPtr((CGrenade*)NULL);
+	bouncygrenade* pGrenade = GetClassPtr((bouncygrenade*)NULL);
 	pGrenade->Spawn();
 	UTIL_SetOrigin(pGrenade->pev, vecStart);
 	pGrenade->pev->velocity = vecVelocity;
@@ -419,7 +420,7 @@ CGrenade* CGrenade::ShootFlare(entvars_t* pevOwner, Vector vecStart, Vector vecV
 		pGrenade->pev->velocity = Vector(0, 0, 0);
 	}
 
-	SET_MODEL(ENT(pGrenade->pev), "models/w_grenade.mdl");
+	//SET_MODEL(ENT(pGrenade->pev), "models/w_grenade.mdl");
 	pGrenade->pev->sequence = RANDOM_LONG(3, 6);
 	pGrenade->pev->framerate = 1.0;
 	pGrenade->ResetSequenceInfo();
@@ -428,7 +429,6 @@ CGrenade* CGrenade::ShootFlare(entvars_t* pevOwner, Vector vecStart, Vector vecV
 	pGrenade->pev->friction = 0.8;
 
 	return pGrenade;
-
 }
 
 CGrenade* CGrenade::ShootTimed(entvars_t* pevOwner, Vector vecStart, Vector vecVelocity, float time)
@@ -455,7 +455,7 @@ CGrenade* CGrenade::ShootTimed(entvars_t* pevOwner, Vector vecStart, Vector vecV
 		pGrenade->pev->velocity = Vector(0, 0, 0);
 	}
 
-	SET_MODEL(ENT(pGrenade->pev), "models/w_grenade.mdl");
+	//SET_MODEL(ENT(pGrenade->pev), "models/w_grenade.mdl");
 	pGrenade->pev->sequence = RANDOM_LONG(3, 6);
 	pGrenade->pev->framerate = 1.0;
 	pGrenade->ResetSequenceInfo();

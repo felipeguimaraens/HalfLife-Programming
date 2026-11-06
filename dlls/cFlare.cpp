@@ -33,7 +33,7 @@ LINK_ENTITY_TO_CLASS(weapon_flare, cFlare);
 void cFlare::Spawn() {
 	Precache();
 	m_iId = WEAPON_FLARE;
-	SET_MODEL(ENT(pev), "models/w_grenade.mdl");
+	SET_MODEL(ENT(pev), "models/can.mdl");
 
 #ifndef CLIENT_DLL
 	pev->dmg = gSkillData.plrDmgHandGrenade;
@@ -82,7 +82,7 @@ void cFlare::SecondaryAttack()
 
 void cFlare::Precache()
 {
-	PRECACHE_MODEL("models/w_grenade.mdl");
+	PRECACHE_MODEL("models/can.mdl");
 	PRECACHE_MODEL("models/v_grenade.mdl");
 	PRECACHE_MODEL("models/p_grenade.mdl");
 }
