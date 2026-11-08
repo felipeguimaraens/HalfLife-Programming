@@ -26,6 +26,7 @@
 #include "soundent.h"
 #include "decals.h"
 #include <bouncygrenade.cpp>
+#include "gRubberBall.h"
 
 
 //===================grenade
@@ -433,7 +434,7 @@ CGrenade* CGrenade::ShootFlare(entvars_t* pevOwner, Vector vecStart, Vector vecV
 
 CGrenade* CGrenade::ShootTimed(entvars_t* pevOwner, Vector vecStart, Vector vecVelocity, float time)
 {
-	CGrenade* pGrenade = GetClassPtr((CGrenade*)NULL);
+	CRubberBall* pGrenade = GetClassPtr((CRubberBall*)NULL);
 	pGrenade->Spawn();
 	UTIL_SetOrigin(pGrenade->pev, vecStart);
 	pGrenade->pev->velocity = vecVelocity;
