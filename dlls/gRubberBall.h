@@ -7,4 +7,5 @@ class CRubberBall : public CGrenade
 {
 public:
 	void Spawn() override;
+	void Precache() override;
 };

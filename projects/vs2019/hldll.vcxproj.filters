@@ -417,6 +417,9 @@
     <ClCompile Include="..\..\dlls\gRubberBall.cpp">
       <Filter>Source Files\dlls</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\dlls\CHandRubberBall.cpp">
+      <Filter>Source Files\dlls</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\dlls\doors.h">
@@ -673,6 +676,9 @@
     </ClInclude>
     <ClInclude Include="CTriggerPrint.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dlls\CHandRubberBall.h">
+      <Filter>Source Files\dlls</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

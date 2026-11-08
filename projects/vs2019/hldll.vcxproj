@@ -133,6 +133,7 @@ cmd /c ""$(ProjectDir)..\..\filecopy.bat" "$(SolutionDir)../../network" "" "delt
     <ClCompile Include="..\..\dlls\CCompExplosive.cpp" />
     <ClCompile Include="..\..\dlls\CFade.cpp" />
     <ClCompile Include="..\..\dlls\CFirstAnimation.cpp" />
+    <ClCompile Include="..\..\dlls\CHandRubberBall.cpp" />
     <ClCompile Include="..\..\dlls\CLaserCustom.cpp" />
     <ClCompile Include="..\..\dlls\client.cpp" />
     <ClCompile Include="..\..\dlls\CMagicCrystal.cpp" />
@@ -273,6 +274,7 @@ cmd /c ""$(ProjectDir)..\..\filecopy.bat" "$(SolutionDir)../../network" "" "delt
     <ClInclude Include="..\..\dlls\basemonster.h" />
     <ClInclude Include="..\..\dlls\cbase.h" />
     <ClInclude Include="..\..\dlls\cdll_dll.h" />
+    <ClInclude Include="..\..\dlls\CHandRubberBall.h" />
     <ClInclude Include="..\..\dlls\client.h" />
     <ClInclude Include="..\..\dlls\decals.h" />
     <ClInclude Include="..\..\dlls\defaultai.h" />
