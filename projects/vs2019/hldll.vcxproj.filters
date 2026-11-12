@@ -423,6 +423,9 @@
     <ClCompile Include="..\..\dlls\CScientistAnim.cpp">
       <Filter>Source Files\dlls</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\dlls\CustomScientist.cpp">
+      <Filter>Source Files\dlls</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\dlls\doors.h">
@@ -681,6 +684,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\dlls\CHandRubberBall.h">
+      <Filter>Source Files\dlls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dlls\CustomScientist.h">
+      <Filter>Source Files\dlls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dlls\scientist.h">
       <Filter>Source Files\dlls</Filter>
     </ClInclude>
   </ItemGroup>

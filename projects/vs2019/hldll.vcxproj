@@ -146,6 +146,7 @@ cmd /c ""$(ProjectDir)..\..\filecopy.bat" "$(SolutionDir)../../network" "" "delt
     <ClCompile Include="..\..\dlls\CTrampoline.cpp" />
     <ClCompile Include="..\..\dlls\CTriggerHeal.cpp" />
     <ClCompile Include="..\..\dlls\CTriggerRepeater.cpp" />
+    <ClCompile Include="..\..\dlls\CustomScientist.cpp" />
     <ClCompile Include="..\..\dlls\defaultai.cpp" />
     <ClCompile Include="..\..\dlls\doors.cpp" />
     <ClCompile Include="..\..\dlls\effects.cpp" />
@@ -277,6 +278,7 @@ cmd /c ""$(ProjectDir)..\..\filecopy.bat" "$(SolutionDir)../../network" "" "delt
     <ClInclude Include="..\..\dlls\cdll_dll.h" />
     <ClInclude Include="..\..\dlls\CHandRubberBall.h" />
     <ClInclude Include="..\..\dlls\client.h" />
+    <ClInclude Include="..\..\dlls\CustomScientist.h" />
     <ClInclude Include="..\..\dlls\decals.h" />
     <ClInclude Include="..\..\dlls\defaultai.h" />
     <ClInclude Include="..\..\dlls\doors.h" />
@@ -296,6 +298,7 @@ cmd /c ""$(ProjectDir)..\..\filecopy.bat" "$(SolutionDir)../../network" "" "delt
     <ClInclude Include="..\..\dlls\player.h" />
     <ClInclude Include="..\..\dlls\saverestore.h" />
     <ClInclude Include="..\..\dlls\schedule.h" />
+    <ClInclude Include="..\..\dlls\scientist.h" />
     <ClInclude Include="..\..\dlls\scripted.h" />
     <ClInclude Include="..\..\dlls\scriptevent.h" />
     <ClInclude Include="..\..\dlls\skill.h" />
