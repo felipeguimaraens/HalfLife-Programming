@@ -87,6 +87,7 @@ public:
 	Activity GetStoppedActivity() override;
 	int ISoundMask() override;
 	void DeclineFollowing() override;
+	void TraceAttack(entvars_t* pevAttacker, float flDamage, Vector vecDir, TraceResult* ptr, int bitsDamageType) override;
 
 	float CoverRadius() override { return 1200; } // Need more room for cover because scientists want to get far away!
 	bool DisregardEnemy(CBaseEntity* pEnemy) { return !pEnemy->IsAlive() || (gpGlobals->time - m_fearTime) > 15; }
@@ -418,6 +419,20 @@ DEFINE_CUSTOM_SCHEDULES(CScientist){
 
 IMPLEMENT_CUSTOM_SCHEDULES(CScientist, CTalkMonster);
 
+void CScientist::TraceAttack(entvars_t* pevAttacker, float flDamage, Vector vecDir, TraceResult* ptr, int bitsDamageType){
+	if (ptr->iHitgroup) {
+		switch (ptr->iHitgroup)
+		{
+			case HITGROUP_HEAD: ALERT(at_console, "Hit detected on head!"); break;
+			case HITGROUP_CHEST: ALERT(at_console, "Hit detected on chest!"); break; 
+			case HITGROUP_STOMACH: ALERT(at_console, "Hit detected on stomach!"); break; 
+			case HITGROUP_LEFTARM: ALERT(at_console, "Hit detected on left arm!"); break;
+			case HITGROUP_RIGHTARM: ALERT(at_console, "Hit detected on right arm!"); break;
+			case HITGROUP_LEFTLEG: ALERT(at_console, "Hit detected on left leg!"); break;
+			case HITGROUP_RIGHTLEG: ALERT(at_console, "Hit detected on right leg!"); break;
+		}
+	}
+}
 
 void CScientist::DeclineFollowing()
 {
