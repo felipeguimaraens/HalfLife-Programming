@@ -1,6 +1,6 @@
 #include "gRubberBall.h"
 
-LINK_ENTITY_TO_CLASS(rubberball, CRubberBall);
+
 
 void CRubberBall::Spawn()
 {
@@ -19,6 +19,8 @@ void CRubberBall::Spawn()
 	pev->dmg = 100;
 	m_fRegisteredSound = false;
 }
+
+LINK_ENTITY_TO_CLASS(rubberball, CRubberBall);
 
 void CRubberBall::Precache() {
 	PRECACHE_MODEL("models/big_rock.mdl");
